@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutory_v2/pages/Quiz.dart';
 import 'package:tutory_v2/pages/competition.dart';
+import 'package:tutory_v2/pages/evaluate.dart';
 import 'package:tutory_v2/pages/home.dart';
 import 'package:tutory_v2/pages/practice.dart';
 import 'package:tutory_v2/pages/practice_hardness.dart';
@@ -21,17 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return MaterialApp(
-    darkTheme: ThemeData.dark(),
-    theme: ThemeData(
-    brightness: Brightness.dark,
-   visualDensity: const VisualDensity(horizontal: 2.0, vertical: 2.0),
-   primaryColor: const Color(0xff03203C),
-   primaryColorDark: const Color(0xff242B2E),
-            
-   iconTheme:
-   const IconThemeData(color: Colors.amber, size: 15.0, opacity: 10),
-    accentColor: Colors.amber,
-    accentColorBrightness: Brightness.light),
+    
     initialRoute: '/home',
     routes: {
       '/home':(context)=>const Home(),
@@ -41,8 +32,9 @@ class MyApp extends StatelessWidget {
       '/profile':(context)=>const Profile(),
       '/level':(context) => const Level_scrn(),
       '/category':(context) => const Practice_Question_Category(),
-      '/loading':(context) => const LoadingShared()
-
+      '/loading':(context) => const LoadingShared(),
+      '/quiz':(context) => Quiz(),
+      '/validate':(context) => Validate()
     },
     );
   }

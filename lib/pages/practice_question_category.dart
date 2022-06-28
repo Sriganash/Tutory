@@ -9,17 +9,15 @@ class Practice_Question_Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white38,
       appBar: AppBar(
+        title: Text("Select category",style: TextStyle(letterSpacing: 5,
+            fontSize: 20,color: Colors.white),),
+            centerTitle: true,
+        backgroundColor: Colors.deepPurple[700],
+        elevation: 0,
         
-        // ignore: prefer_const_constructors
-        title: Text(
-          "Select a category",
-          style: TextStyle(
-            letterSpacing: 2,
-            fontSize: 20,
-          ),
-        ),
-    ),
+      ),
     body: ListView.builder(itemCount:categories.length,
         itemBuilder: (context,length){
           return Card(
@@ -27,11 +25,11 @@ class Practice_Question_Category extends StatelessWidget {
               onTap: (){
                 Navigator.pushNamed(context, '/level',arguments: {'id':categories[length].id});
               },
-             title: Text(categories[length].name),
+             title: Text(categories[length].name,style: TextStyle(color: Colors.black),),
             leading: CircleAvatar(
-              child: FaIcon(categories[length].icon),
+              child: FaIcon(categories[length].icon,color: Colors.white,),
             ),
-            tileColor: Colors.white12,
+            tileColor: Colors.transparent,
           ),
           );
 

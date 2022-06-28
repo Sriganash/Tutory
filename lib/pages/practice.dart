@@ -16,21 +16,24 @@ class _PracticeState extends State<Practice> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
+      padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-        color: Colors.white,
+      border: Border.all( //color of border
+        color: Colors.transparent,
+          width: 60, //width of border
         ),
-        padding: EdgeInsets.all(30),
-        child: Column(
+        color: Colors.white,
+      borderRadius: BorderRadius.circular(30),
+      ),
+      child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Practice",style: TextStyle(fontSize: 40,color:Colors.blue[600],fontWeight:FontWeight.w800),),
+            Text("Practice",style: TextStyle(fontSize: 30,color:Colors.black,fontWeight:FontWeight.w800,letterSpacing: 5),),
             SizedBox(height:20),
-            TextButton.icon(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.bookMedical), label: Text("Previous Year Questions",style: TextStyle(fontSize: 20,color:Colors.blue[600]),)),
-            TextButton.icon(onPressed: (){Navigator.pushNamed(context, '/category');}, icon: FaIcon(FontAwesomeIcons.paperclip), label: Text("Practice Questions",style: TextStyle(fontSize: 20,color:Colors.blue[600]),)),
+            TextButton.icon(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.bookMedical), label: Text("Previous Year Questions",style: TextStyle(fontSize: 20,color:Colors.black,fontFamily: "Times New Roman"),)),
+            TextButton.icon(onPressed: (){Navigator.pushNamed(context, '/category');}, icon: FaIcon(FontAwesomeIcons.paperclip), label: Text("Practice Questions",style: TextStyle(fontSize: 20,color:Colors.black,fontFamily: "Times New Roman")),),
           ],)
       ),
     );

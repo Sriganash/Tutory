@@ -7,15 +7,31 @@ import 'package:tutory_v2/pages/Quiz.dart';
 
 import '../Models/question.dart';
 
+List<Question> questions=[];
 class LoadingShared extends StatelessWidget {
   const LoadingShared({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
+  Future<List<Question>>  getQuestions(int category, String difficulty) async {
+  String url = "https://opentdb.com/api.php?amount=10&category=$category&difficulty=$difficulty&type=multiple";
+
+  Response response=await(get(Uri.parse('$url')));
+  List<Map<String, dynamic>> question = List<Map<String,dynamic>>.from(json.decode(response.body)["results"]);
+  return Question.fromData(question);
+}
+
+  Future<void> startQuiz(Map data) async {
+    try {
+      List<Question> questions =  await getQuestions(data['id'],data['level']);
+      Navigator.popAndPushNamed(context,'/quiz',arguments:questions as List<Question>);
+    } catch (e) {
+     print(e);
+  }
+}
   List<Question>  questions=[];
    final Map data = ModalRoute.of(context)?.settings.arguments as Map;
-  Loader().startQuiz(data);
+  startQuiz(data);
     return Container(
       color: Colors.white,
       child: SpinKitCubeGrid(
@@ -27,22 +43,6 @@ class LoadingShared extends StatelessWidget {
 
 class Loader {
 
-  Future<List<Question>>  getQuestions(int category, String difficulty) async {
-  String url = "https://opentdb.com/api.php?amount=10&category=$category&difficulty=$difficulty";
-
-  Response response=await(get(Uri.parse('$url')));
-  List<Map<String, dynamic>> question = List<Map<String,dynamic>>.from(json.decode(response.body)["results"]);
-  return Question.fromData(question);
-}
-
-  Future<void> startQuiz(Map data) async {
-    try {
-      List<Question> questions =  await getQuestions(data['id'],data['level']);
-      print(questions[1].question);
-      Quiz(questions);
-    } catch (e) {
-     print(e);
-  }
-}
+  
 
 }

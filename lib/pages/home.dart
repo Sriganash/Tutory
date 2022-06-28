@@ -21,12 +21,22 @@ class _HomeState extends State<Home> {
   
   int _selecteditem=0;
   PageController pageController=PageController();
+  
+  final _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurple[700],
       appBar: AppBar(
         title: Text("Tutory",textAlign: TextAlign.right,style: TextStyle(letterSpacing: 5,
-            fontSize: 35,color:Color.fromARGB(255, 167, 255, 3)),),
+            fontSize: 35,color: Colors.white,fontFamily: 'Times New Roman'),),
+            centerTitle: true,
+        backgroundColor: Colors.deepPurple[700],
+        elevation: 0,
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.logout))
+        ],
+        
       ),
       drawer: Drawer(
         backgroundColor: Colors.grey[700],
@@ -35,25 +45,19 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 40,),
-            CircleAvatar(
-              backgroundImage:AssetImage('assets/avatar.png',),
-              radius: 40,
-            ),
-            SizedBox(height: 10,),
-            Text("Hello...",style: TextStyle(fontSize: 20),),
             SizedBox(height: 100,),
-            TextButton.icon(onPressed: (){changeTab(0);}, icon: FaIcon(FontAwesomeIcons.house), label: Text("Home",style: TextStyle(fontSize: 20),)),
+            TextButton.icon(onPressed: (){changeTab(0);}, icon: FaIcon(FontAwesomeIcons.house), label: Text("Home",style: TextStyle(fontSize: 20,color: Colors.white),)),
             SizedBox(height: 5,),
-            TextButton.icon(onPressed: (){changeTab(1);}, icon: FaIcon(FontAwesomeIcons.book), label: Text("Materials",style: TextStyle(fontSize: 20),)),
+            TextButton.icon(onPressed: (){changeTab(1);}, icon: FaIcon(FontAwesomeIcons.book), label: Text("Materials",style: TextStyle(fontSize: 20,color: Colors.white),)),
             SizedBox(height: 5,),
-            TextButton.icon(onPressed: (){changeTab(2);}, icon: Icon(Icons.track_changes), label: Text("Practice",style: TextStyle(fontSize: 20),)),
+            TextButton.icon(onPressed: (){changeTab(2);}, icon: Icon(Icons.track_changes), label: Text("Practice",style: TextStyle(fontSize: 20,color: Colors.white),)),
             SizedBox(height: 5,),
-            TextButton.icon(onPressed: (){changeTab(3);}, icon: FaIcon(FontAwesomeIcons.globe), label: Text("Compete",style: TextStyle(fontSize: 20),)),
+            TextButton.icon(onPressed: (){changeTab(3);}, icon: FaIcon(FontAwesomeIcons.globe), label: Text("Compete",style: TextStyle(fontSize: 20,color: Colors.white),)),
             SizedBox(height: 5,),
-            TextButton.icon(onPressed: (){changeTab(4);}, icon: FaIcon(FontAwesomeIcons.person), label: Text("Profile",style: TextStyle(fontSize: 20),)),
-            SizedBox(height: 50,),
-            Text("Tutory",textAlign: TextAlign.right,style: TextStyle(letterSpacing: 5,
-            fontSize: 35,color:Color.fromARGB(255, 167, 255, 3)),),
+            TextButton.icon(onPressed: (){changeTab(4);}, icon: FaIcon(FontAwesomeIcons.person), label: Text("Profile",style: TextStyle(fontSize: 20,color: Colors.white),)),
+            SizedBox(height: 200,),
+            Text("Tutory",textAlign: TextAlign.end,style: TextStyle(letterSpacing: 5,
+            fontSize: 35,color:Colors.white),),
             ],
         ),
       ),
