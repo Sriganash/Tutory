@@ -1,9 +1,10 @@
+// ignore_for_file: unnecessary_cast, use_build_context_synchronously, avoid_print, unused_local_variable, prefer_const_constructors
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart';
-import 'package:tutory_v2/pages/Quiz.dart';
 
 import '../Models/question.dart';
 
@@ -16,7 +17,7 @@ class LoadingShared extends StatelessWidget {
   Future<List<Question>>  getQuestions(int category, String difficulty) async {
   String url = "https://opentdb.com/api.php?amount=10&category=$category&difficulty=$difficulty&type=multiple";
 
-  Response response=await(get(Uri.parse('$url')));
+  Response response=await(get(Uri.parse(url)));
   List<Map<String, dynamic>> question = List<Map<String,dynamic>>.from(json.decode(response.body)["results"]);
   return Question.fromData(question);
 }

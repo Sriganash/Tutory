@@ -1,9 +1,8 @@
-import 'dart:math';
+// ignore_for_file: file_names, sized_box_for_whitespace, avoid_print, prefer_interpolation_to_compose_strings
 
+import 'dart:math';
+import  'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 import 'package:tutory_v2/Models/question.dart';
 
@@ -20,11 +19,11 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  @override
   int i=0;
   int k=0;
   int r=0;
   List<int> answer=[0,0,0,0,0,0,0,0,0,0,0];
+  @override
   Widget build(BuildContext context) {
     questions = ModalRoute.of(context)?.settings.arguments as List<Question>;
     setValue(i);
@@ -35,14 +34,14 @@ class _QuizState extends State<Quiz> {
        backgroundColor: Colors.transparent,
        elevation: 0,
        actions: [
-        TextButton(onPressed: (){}, child: Text("Skip",style:TextStyle(color:Colors.white))),
+        TextButton(onPressed: (){}, child: const Text("Skip",style:TextStyle(color:Colors.white))),
        ], 
     ),
     body: Column(
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 75,left:30),
-          child: Text("Question $r/10",style: TextStyle(fontSize: 20,color:Colors.white),
+          child: Text("Question $r/10",style: const TextStyle(fontSize: 20,color:Colors.white),
           ),
         ),
         Padding(
@@ -64,63 +63,72 @@ class _QuizState extends State<Quiz> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(questions[i].question,style: TextStyle(fontSize: 25,fontFamily: "Arial"),),
-                              SizedBox(height:50),
+                        Text(questions[i].question,style: const TextStyle(fontSize: 25,fontFamily: "Arial"),),
+                              const SizedBox(height:50),
                               Container(decoration: BoxDecoration(
                               border: Border.all(
                                color: Colors.black, //color of border
                                width: 2, //width of border
-                              ),borderRadius:BorderRadius.circular(20),),alignment: Alignment.center ,
-                              child:TextButton(onPressed: (){
-                                questions[i].answer=0;
-                                  i++;
-                                
-                                  print(i);
-                                  if(i==10)
+                              ),borderRadius:BorderRadius.circular(15),),
+                              width: double.infinity,
+                              child:ElevatedButton(onPressed: (){
+                                    
+                                    questions[i].answer=0;
+                                    i++;
+                                  if(i>=10)
                                   {
                                     Navigator.popAndPushNamed(context, '/validate',arguments: questions);
-                                  }
+                                    }
                                   else{
                                   setState(() {
                                     i;
                                   });
                                   }
                               },
+                              style: ButtonStyle(
+                                maximumSize:MaterialStateProperty.all(Size.infinite) ,
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor:MaterialStateProperty.all<Color>(Colors.white),
+                              ),
                                child: Text("1. "+questions[i].incorrectAnswers[0],
-                               style: TextStyle(fontSize: 18,color: Colors.black) ,))),
-                              SizedBox(height: 15,),
+                               style: const TextStyle(fontSize: 18,color: Colors.black) ,))),
+                              const SizedBox(height: 15,),
                               Container(decoration: BoxDecoration(
                               border: Border.all(
                                color: Colors.black, //color of border
                                width: 2, //width of border
-                              ),
-                              borderRadius:BorderRadius.circular(20),),alignment: Alignment.center ,
-                             
-                              child:TextButton(onPressed: (){
-                                questions[i].answer=1;
-                                i++;
+                              ),borderRadius:BorderRadius.circular(15),),
+                              width: double.infinity,
+                              child:ElevatedButton(onPressed: (){
+                                    
+                                    questions[i].answer=1;
+                                    i++;
                                   if(i>=10)
                                   {
-                                    
                                     Navigator.popAndPushNamed(context, '/validate',arguments: questions);
-                                  }
+                                    }
                                   else{
                                   setState(() {
                                     i;
                                   });
                                   }
-                                },
+                              },
+                              style: ButtonStyle(
+                                maximumSize:MaterialStateProperty.all(Size.infinite) ,
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor:MaterialStateProperty.all<Color>(Colors.white),
+                              ),
                                child: Text("2. "+questions[i].incorrectAnswers[1],
-                               style: TextStyle(fontSize: 18,color: Colors.black) ,))),
-                              SizedBox(height: 15,),
+                               style: const TextStyle(fontSize: 18,color: Colors.black) ,))),
+                              const SizedBox(height: 15,),
                               Container(decoration: BoxDecoration(
                               border: Border.all(
                                color: Colors.black, //color of border
                                width: 2, //width of border
-                              ),borderRadius:BorderRadius.circular(20),),alignment: Alignment.center ,
-                              child:TextButton(onPressed: (){
-                                
-                                 
+                              ),borderRadius:BorderRadius.circular(15),),
+                              width: double.infinity,
+                              child:ElevatedButton(onPressed: (){
+                                    
                                     questions[i].answer=2;
                                     i++;
                                   if(i>=10)
@@ -133,31 +141,42 @@ class _QuizState extends State<Quiz> {
                                   });
                                   }
                               },
+                              style: ButtonStyle(
+                                maximumSize:MaterialStateProperty.all(Size.infinite) ,
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor:MaterialStateProperty.all<Color>(Colors.white),
+                              ),
                                child: Text("3. "+questions[i].incorrectAnswers[2],
-                               style: TextStyle(fontSize: 18,color: Colors.black) ,))),
-                              SizedBox(height: 15,),
+                               style: const TextStyle(fontSize: 18,color: Colors.black) ,))),
+                              const SizedBox(height: 15,),
                               Container(decoration: BoxDecoration(
                               border: Border.all(
                                color: Colors.black, //color of border
                                width: 2, //width of border
-                              ),borderRadius:BorderRadius.circular(20),),alignment: Alignment.center ,
-                              child:TextButton(onPressed: (){
-                                  questions[i].answer=3;
-                                  i++;
+                              ),borderRadius:BorderRadius.circular(15),),
+                              width: double.infinity,
+                              child:ElevatedButton(onPressed: (){
+                                    
+                                    questions[i].answer=3;
+                                    i++;
                                   if(i>=10)
                                   {
-                                    Navigator.popAndPushNamed(context, '/validate',arguments: {'question':questions as List<Question>,'answer':answer as int});
-                                  }
+                                    Navigator.popAndPushNamed(context, '/validate',arguments: questions);
+                                    }
                                   else{
                                   setState(() {
                                     i;
                                   });
                                   }
                               },
+                              style: ButtonStyle(
+                                maximumSize:MaterialStateProperty.all(Size.infinite) ,
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor:MaterialStateProperty.all<Color>(Colors.white),
+                              ),
                                child: Text("4. "+questions[i].incorrectAnswers[3],
-                               style: TextStyle(fontSize: 18,color: Colors.black) ,))),
-                              SizedBox(height: 15,),
-                           
+                               style: const TextStyle(fontSize: 18,color: Colors.black) ,))),
+                              const SizedBox(height: 15,),
                   
                       
                       ],
@@ -178,7 +197,8 @@ class _QuizState extends State<Quiz> {
 
   void setValue(int j) {
     r++;
-    if(j<10)
+    if(j<10) {
       questions[j].incorrectAnswers.insert(Random().nextInt(4), questions[j].correctAnswer);
+    }
   }
 }

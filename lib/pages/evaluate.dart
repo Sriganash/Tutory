@@ -1,4 +1,6 @@
 
+// ignore_for_file: override_on_non_overriding_member, annotate_overrides, curly_braces_in_flow_control_structures, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'package:tutory_v2/pages/Quiz.dart';
 
@@ -22,23 +24,32 @@ class _ValidateState extends State<Validate> {
     
     List<Question> questions = ModalRoute.of(context)?.settings.arguments as List<Question>;
     for(i=0;i<questions.length;i++)
-      if(questions[i].correctAnswer==questions[i].incorrectAnswers[questions[i].answer])
-        r++;
+    {
+      // ignore: curly_braces_in_flow_control_structures
+      if(questions[i].answer!=-1)
+        if(questions[i].correctAnswer==questions[i].incorrectAnswers[questions[i].answer])
+          r++;
+      
+    }
     i=0;
     return Scaffold(
       backgroundColor: Colors.deepPurple[700],
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple[700],
+        title: Text("Your Result: $r/10",style: const TextStyle(fontSize: 20,color: Colors.white),),
+      ),
       body: ListView(
           children: [
-            Text("Your Result: $r/10",style: TextStyle(fontSize: 30,color: Colors.white),),
             for(int i=0;i<10;i++) Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height: 10,),
-                Container(color:Colors.white,padding:EdgeInsets.all(8),child:Column(
+                const SizedBox(height: 10,),
+                Container(color:Colors.white,padding:const EdgeInsets.all(8),child:Column(
                   children: [
-                    Text(questions[i].question,style: TextStyle(fontSize: 25)),
-                    Row(children: [Text("Your Answer: ",style: TextStyle(fontSize: 20),),Text(questions[i].incorrectAnswers[questions[i].answer],style: TextStyle(fontSize: 20,color: check(i)),)],),
-                    Row(children: [Text("Correct Answer: ",style: TextStyle(fontSize: 20),),Text(questions[i].correctAnswer,style: TextStyle(fontSize: 20,color: green),)],),
+                    Text(questions[i].question,style: const TextStyle(fontSize: 18)),
+                    Row(children: [const Text("Your Answer: ",style: TextStyle(fontSize: 15),),
+                                 questions[i].answer!=-1 ? Text(questions[i].incorrectAnswers[questions[i].answer],style: TextStyle(fontSize: 20,color: check(i)),) : Text("Time Out",style: TextStyle(fontSize: 20,color: Colors.red),)],),
+                    Row(children: [const Text("Correct Answer: ",style: TextStyle(fontSize: 15),),Text(questions[i].correctAnswer,style: TextStyle(fontSize: 20,color: green),)],),
                     
                   ],  
                 ),

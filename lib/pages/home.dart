@@ -1,9 +1,7 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, duplicate_ignore, unused_field
 
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:http/http.dart';
 import 'home_container.dart';
 import 'study.dart';
 import 'practice.dart';
@@ -28,8 +26,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[700],
       appBar: AppBar(
-        title: Text("Tutory",textAlign: TextAlign.right,style: TextStyle(letterSpacing: 5,
-            fontSize: 35,color: Colors.white,fontFamily: 'Times New Roman'),),
+        title: Text("TUTORY", textAlign: TextAlign.right,style: TextStyle(fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold,letterSpacing:2,),),
             centerTitle: true,
         backgroundColor: Colors.deepPurple[700],
         elevation: 0,
@@ -39,31 +36,62 @@ class _HomeState extends State<Home> {
         
       ),
       drawer: Drawer(
-        backgroundColor: Colors.grey[700],
+        backgroundColor: Color.fromARGB(255, 40, 38, 38),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 40,),
             SizedBox(height: 100,),
-            TextButton.icon(onPressed: (){changeTab(0);}, icon: FaIcon(FontAwesomeIcons.house), label: Text("Home",style: TextStyle(fontSize: 20,color: Colors.white),)),
+            TextButton.icon(onPressed: (){changeTab(0);}, icon: Padding(
+              padding: const EdgeInsets.only(left:25.0),
+              child: FaIcon(FontAwesomeIcons.house,color: Colors.white,size: 16,),
+            ), label: Padding(
+              padding: const EdgeInsets.only(left:50),
+              child: Text("Home",style: TextStyle(fontSize: 15,color: Colors.white,),),
+            )),
             SizedBox(height: 5,),
-            TextButton.icon(onPressed: (){changeTab(1);}, icon: FaIcon(FontAwesomeIcons.book), label: Text("Materials",style: TextStyle(fontSize: 20,color: Colors.white),)),
+            TextButton.icon(onPressed: (){changeTab(1);}, icon: Padding(
+              padding: const EdgeInsets.only(left:25.0),
+              child: FaIcon(FontAwesomeIcons.book,color: Colors.white,size: 16,),
+            ), label: Padding(
+              padding: const EdgeInsets.only(left:50),
+              child: Text("Materials",style: TextStyle(fontSize: 15,color: Colors.white),),
+            )),
             SizedBox(height: 5,),
-            TextButton.icon(onPressed: (){changeTab(2);}, icon: Icon(Icons.track_changes), label: Text("Practice",style: TextStyle(fontSize: 20,color: Colors.white),)),
+            TextButton.icon(onPressed: (){changeTab(2);}, icon: Padding(
+              padding: const EdgeInsets.only(left:25.0),
+              child: Icon(Icons.track_changes,color: Colors.white,size: 16,),
+            ), label: Padding(
+              padding: const EdgeInsets.only(left:50),
+              child: Text("Practice",style: TextStyle(fontSize: 15,color: Colors.white),),
+            )),
             SizedBox(height: 5,),
-            TextButton.icon(onPressed: (){changeTab(3);}, icon: FaIcon(FontAwesomeIcons.globe), label: Text("Compete",style: TextStyle(fontSize: 20,color: Colors.white),)),
+            TextButton.icon(onPressed: (){changeTab(3);}, icon: Padding(
+              padding: const EdgeInsets.only(left:25.0),
+              child: FaIcon(FontAwesomeIcons.globe,color: Colors.white,size: 16,),
+            ), label: Padding(
+              padding: const EdgeInsets.only(left:50),
+              child: Text("Compete",style: TextStyle(fontSize: 15,color: Colors.white),),
+            )),
             SizedBox(height: 5,),
-            TextButton.icon(onPressed: (){changeTab(4);}, icon: FaIcon(FontAwesomeIcons.person), label: Text("Profile",style: TextStyle(fontSize: 20,color: Colors.white),)),
+            TextButton.icon(onPressed: (){changeTab(4);}, icon: Padding(
+              padding: const EdgeInsets.only(left:25.0),
+              child: FaIcon(FontAwesomeIcons.person,color: Colors.white,size: 16,),
+            ), label: Padding(
+              padding: const EdgeInsets.only(left:58),
+              child: Text("Profile",style: TextStyle(fontSize: 15,color: Colors.white),),
+            )),
             SizedBox(height: 200,),
-            Text("Tutory",textAlign: TextAlign.end,style: TextStyle(letterSpacing: 5,
-            fontSize: 35,color:Colors.white),),
+            Center(
+              child: Text("TUTORY",textAlign: TextAlign.end,style: TextStyle(fontSize: 18,fontWeight:FontWeight.bold,color:Colors.white),),
+            ),
             ],
         ),
       ),
       body: PageView(
       controller: pageController,
-      children: [
+      children: const [
         Home_Container(),
         Study(),
         Practice(),

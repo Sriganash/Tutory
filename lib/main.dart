@@ -22,6 +22,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return MaterialApp(
+    theme: ThemeData(
+     fontFamily:'Nunito'
+      ),
+      
     
     initialRoute: '/home',
     routes: {
@@ -33,8 +37,8 @@ class MyApp extends StatelessWidget {
       '/level':(context) => const Level_scrn(),
       '/category':(context) => const Practice_Question_Category(),
       '/loading':(context) => const LoadingShared(),
-      '/quiz':(context) => Quiz(),
-      '/validate':(context) => Validate()
+      '/quiz':(context) => const Quiz(),
+      '/validate':(context) => const Validate()
     },
     );
   }

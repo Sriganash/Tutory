@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tutory_v2/Models/category.dart';
@@ -9,10 +11,10 @@ class Practice_Question_Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white38,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Select category",style: TextStyle(letterSpacing: 5,
-            fontSize: 20,color: Colors.white),),
+        title: const Text("Select the category",style: TextStyle(letterSpacing: 5,
+            fontSize: 18,color: Colors.white),),
             centerTitle: true,
         backgroundColor: Colors.deepPurple[700],
         elevation: 0,
@@ -21,15 +23,16 @@ class Practice_Question_Category extends StatelessWidget {
     body: ListView.builder(itemCount:categories.length,
         itemBuilder: (context,length){
           return Card(
+            elevation: 2.5,
             child: ListTile(
               onTap: (){
                 Navigator.pushNamed(context, '/level',arguments: {'id':categories[length].id});
               },
-             title: Text(categories[length].name,style: TextStyle(color: Colors.black),),
-            leading: CircleAvatar(
+             title: Text(categories[length].name,style: const TextStyle(fontSize: 15, color: Colors.black),),
+            leading: CircleAvatar(backgroundColor: Colors.deepPurple,
               child: FaIcon(categories[length].icon,color: Colors.white,),
             ),
-            tileColor: Colors.transparent,
+            tileColor: const Color.fromARGB(223, 255, 255, 255),
           ),
           );
 
