@@ -13,7 +13,7 @@ class Practice_Question_Category extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Select the category",style: TextStyle(letterSpacing: 5,
+        title: const Text("Select the category",style: TextStyle(
             fontSize: 18,color: Colors.white),),
             centerTitle: true,
         backgroundColor: Colors.deepPurple[700],

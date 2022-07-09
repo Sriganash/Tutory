@@ -48,8 +48,8 @@ class _ValidateState extends State<Validate> {
                   children: [
                     Text(questions[i].question,style: const TextStyle(fontSize: 18)),
                     Row(children: [const Text("Your Answer: ",style: TextStyle(fontSize: 15),),
-                                 questions[i].answer!=-1 ? Text(questions[i].incorrectAnswers[questions[i].answer],style: TextStyle(fontSize: 20,color: check(i)),) : Text("Time Out",style: TextStyle(fontSize: 20,color: Colors.red),)],),
-                    Row(children: [const Text("Correct Answer: ",style: TextStyle(fontSize: 15),),Text(questions[i].correctAnswer,style: TextStyle(fontSize: 20,color: green),)],),
+                                 questions[i].answer!=-1 ? Expanded(child: Text(questions[i].incorrectAnswers[questions[i].answer],style: TextStyle(fontSize: 20,color: check(i)),)) : const Text("Time Out",style: TextStyle(fontSize: 20,color: Colors.red),)],),
+                    Row(children: [const Text("Correct Answer: ",style: TextStyle(fontSize: 15),),Expanded(child: Text(questions[i].correctAnswer,style: TextStyle(fontSize: 20,color: green),))],),
                     
                   ],  
                 ),

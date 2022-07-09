@@ -33,6 +33,7 @@ class _PracticeState extends State<Practice> {
             Text("Practice",style: TextStyle(fontSize: 18,color:Colors.black,fontWeight:FontWeight.w800,letterSpacing: 5),),
             
             TextButton.icon(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.bookMedical), label: Text("Previous Year Questions",style: TextStyle(fontSize: 15,color:Colors.black,),)),
+            SizedBox(height: 20,),
             TextButton.icon(onPressed: (){Navigator.pushNamed(context, '/category');}, icon: FaIcon(FontAwesomeIcons.paperclip), label: Text("Practice Questions",style: TextStyle(fontSize: 15,color:Colors.black,)),),
           ],)
       ),
