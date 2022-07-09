@@ -26,7 +26,7 @@ class _ValidateState extends State<Validate> {
     for(i=0;i<questions.length;i++)
     {
       // ignore: curly_braces_in_flow_control_structures
-      if(questions[i].answer!=-1)
+      if(questions[i].answer!=-1 && questions[i].answer!=-2)
         if(questions[i].correctAnswer==questions[i].incorrectAnswers[questions[i].answer])
           r++;
       
@@ -48,7 +48,10 @@ class _ValidateState extends State<Validate> {
                   children: [
                     Text(questions[i].question,style: const TextStyle(fontSize: 18)),
                     Row(children: [const Text("Your Answer: ",style: TextStyle(fontSize: 15),),
-                                 questions[i].answer!=-1 ? Expanded(child: Text(questions[i].incorrectAnswers[questions[i].answer],style: TextStyle(fontSize: 20,color: check(i)),)) : const Text("Time Out",style: TextStyle(fontSize: 20,color: Colors.red),)],),
+                                 questions[i].answer!=-1 && questions[i].answer!=-2 
+                                 ? Expanded(child: Text(questions[i].incorrectAnswers[questions[i].answer],style : TextStyle(fontSize: 20,color: check(i)))) 
+                                 : questions[i].answer==-1 ? const Text("Time Out",style: TextStyle(fontSize: 20,color: Colors.red),) 
+                                 :const Text("Skipped",style: TextStyle(fontSize: 20,color: Colors.red),) ,],),
                     Row(children: [const Text("Correct Answer: ",style: TextStyle(fontSize: 15),),Expanded(child: Text(questions[i].correctAnswer,style: TextStyle(fontSize: 20,color: green),))],),
                     
                   ],  

@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'dart:math';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:html_character_entities/html_character_entities.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,19 @@ class _QuizState extends State<Quiz> {
        backgroundColor: Colors.transparent,
        elevation: 0,
        actions: [
-        TextButton(onPressed: (){}, child: const Text("Skip",style:TextStyle(color:Colors.white))),
+        TextButton(onPressed: (){
+          questions[i].answer=-2;
+           i++;
+           if(i>=10)
+            {
+              Navigator.popAndPushNamed(context, '/validate',arguments: questions);
+            }
+            else{
+               setState(() {
+                  i;
+               });
+             }
+         }, child: const Text("Skip",style:TextStyle(color:Colors.white))),
        ], 
     ),
     body: Column(
@@ -194,6 +207,8 @@ class _QuizState extends State<Quiz> {
                       
                       ],
                     ),
+                   TextButton.icon(onPressed: (){}, icon: Icon(Icons.arrow_back),
+                   label: Text("Previous Questions"))
                     ],
                   );
                 }
