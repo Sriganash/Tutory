@@ -15,7 +15,7 @@ class LoadingShared extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   Future<List<Question>>  getQuestions(int category, String difficulty) async {
-  String url = "https://opentdb.com/api.php?amount=10&category=$category&difficulty=$difficulty&type=multiple";
+  String url = "https://opentdb.com/api.php?amount=11&category=$category&difficulty=$difficulty&type=multiple";
 
   Response response=await(get(Uri.parse(url)));
   List<Map<String, dynamic>> question = List<Map<String,dynamic>>.from(json.decode(response.body)["results"]);
